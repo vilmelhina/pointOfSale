@@ -3,7 +3,6 @@ package se.kth.iv1350.POS.model;
 /**
  * Represents a specified amount of money in a specific currency.
  */
-
 public class Cash {
     private final double amount;
     private final String currency;
@@ -57,7 +56,7 @@ public class Cash {
      * Returns the amount of cash.
      * @return the amount
      */
-    double getAmount() {
+    public double getAmount() {
         return amount;
     }
     
@@ -65,11 +64,10 @@ public class Cash {
      * Returns the currency of the Cash
      * @return the currency as a String
      */
-    String getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
-    
     /**
      * Formats the Cash as a string.
      */

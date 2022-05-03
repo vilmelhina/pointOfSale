@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.integration.InventorySystem;
 
@@ -50,7 +51,8 @@ public class ShoppingCartTest {
                         + "quantity");
     }
     
-    @Test
+    // Will be used when exceptions are added to the code.
+    @Disabled
     public void testWrongItemID() {
         testCart.registerItem(6, 1);
     }

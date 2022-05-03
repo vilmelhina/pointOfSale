@@ -73,7 +73,7 @@ public class Item {
      * Get the description of the item
      * @return the description of the item
      */
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return description;
     }
 

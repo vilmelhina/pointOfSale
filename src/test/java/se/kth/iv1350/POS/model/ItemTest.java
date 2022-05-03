@@ -1,6 +1,5 @@
 package se.kth.iv1350.POS.model;
 
-import se.kth.iv1350.POS.model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ public class ItemTest {
     private Item testItem; 
     private int itemID = 124;
     private String name = "Chocolate";
-    private float rateOfVAT = 30;
+    private double rateOfVAT = 0.3;
     private String description = "Marabou Oreo 200g";
     private Cash price;
     private float cost = 23;
@@ -30,49 +29,6 @@ public class ItemTest {
     }
 
     @Test
-    public void testItemID() {
-        assertEquals(itemID, testItem.getID(), "Item did not have correct ID.");
-    }
-    
-    @Test
-    public void testName() {
-        assertEquals(name, testItem.getName(), 
-                "Item did not have correct name.");
-    }
-    
-    @Test
-    public void testVAT() {
-        assertEquals(rateOfVAT, testItem.getVAT(), 
-                "Item did not have correct VAT.");
-    }
-    
-    @Test
-    public void testDescription() {
-        assertEquals(description, testItem.getDescription(), 
-                "Item did not have correct ID.");
-    }
-    
-    @Test
-    public void testPrice() {
-        assertEquals(price.getAmount(), testItem.getPrice().getAmount(), 
-                "Item did not have correct price.");
-    }
-    
-    @Test
-    public void testCurrency() {
-        assertEquals(price.getCurrency(), testItem.getPrice().getCurrency(), 
-                "Item did not have correct currency.");
-    }
-    
-    @Test
-    public void testSetQuantity() {
-        int quantity = 5;
-        testItem.setQuantity(quantity);
-        assertEquals(quantity, testItem.getQuantity(), 
-                "Item did not have correct quantity when setting quantity.");
-    }
-    
-    @Test
     public void testIncreaseQuantity() {
         int quantity = 5;
         int increaseAmount = 7;
@@ -80,5 +36,13 @@ public class ItemTest {
         testItem.increaseQuantity(increaseAmount);
         assertEquals(quantity + increaseAmount, testItem.getQuantity(), 
                 "Item did not have correct quantity when increasing quantity.");
+    }
+    
+    @Test
+    public void testVATAmount() {
+        double expectedVATAmount = cost * rateOfVAT;
+        double actualVATAmount = testItem.getVATAmount().getAmount();
+        assertEquals(expectedVATAmount, actualVATAmount, 
+                "VAT amount was not right.");
     }
 }
