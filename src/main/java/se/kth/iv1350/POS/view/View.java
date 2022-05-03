@@ -1,7 +1,7 @@
 package se.kth.iv1350.POS.view;
 
 import se.kth.iv1350.POS.controller.Controller;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  * Placeholder class for the view of the program. Contains a fake scenario that
@@ -33,7 +33,7 @@ public class View {
             controller.registerItem(3,6);
             System.out.println(controller.getTotalOfSale());
             controller.endSale();
-            controller.pay(new Amount(500, "SEK"));
+            controller.pay(new Cash(500, "SEK"));
         }
 
 }

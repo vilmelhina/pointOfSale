@@ -1,6 +1,6 @@
 package se.kth.iv1350.POS.model;
 
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  * Represents an item that can be bought.
@@ -11,7 +11,7 @@ public class Item {
     private final java.lang.String name;
     private final double rateOfVAT;
     private final java.lang.String description;
-    private final Amount price;
+    private final Cash price;
     private int quantity;
 
     /**
@@ -23,7 +23,7 @@ public class Item {
      * @param price the price of the item
      */
     public Item(int itemID, String name, double rateOfVAT, String description, 
-            Amount price) {
+            Cash price) {
         this.itemID = itemID;
         this.name = name;
         this.rateOfVAT = rateOfVAT;
@@ -83,7 +83,7 @@ public class Item {
      * Get the price of the item
      * @return the price of the item
      */
-    public Amount getPrice() {
+    public Cash getPrice() {
         return price;
     }
     
@@ -91,7 +91,7 @@ public class Item {
      * Get the VAT amount (not rate)
      * @return the VAT amount
      */
-    public Amount getVATAmount() {
+    public Cash getVATAmount() {
         return price.multiply(rateOfVAT);
     }
     

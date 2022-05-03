@@ -4,7 +4,7 @@ import se.kth.iv1350.POS.integration.Register;
 import se.kth.iv1350.POS.integration.AccountingSystem;
 import se.kth.iv1350.POS.integration.SaleLog;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 import java.time.LocalDateTime;
 
 /**
@@ -14,7 +14,7 @@ public class Sale {
 
 	private java.time.LocalDateTime saleTime;
 	private final ShoppingCart shoppingCart;
-        private Amount amountPaid;
+        private Cash amountPaid;
         
 	private final AccountingSystem accountingSystem;
 	private final SaleLog saleLog;
@@ -46,7 +46,7 @@ public class Sale {
          * Returns a receipt with all information about the sale.
          * @param amountPaid the amount that was paid
          */
-	public void addPayment(Amount amountPaid) {
+	public void addPayment(Cash amountPaid) {
             this.amountPaid = amountPaid;
             register.addToRegister(amountPaid);
             logSale();
@@ -70,11 +70,11 @@ public class Sale {
             return saleTime;
         }
        
-        Amount getAmountPaid() {
+        Cash getAmountPaid() {
             return amountPaid;
         }
         
-        Amount getChange() {
+        Cash getChange() {
             return amountPaid.subtract(shoppingCart.getTotal());
         }
 }

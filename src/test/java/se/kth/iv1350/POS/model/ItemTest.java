@@ -5,7 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 public class ItemTest {
     private Item testItem; 
@@ -13,13 +13,13 @@ public class ItemTest {
     private String name = "Chocolate";
     private float rateOfVAT = 30;
     private String description = "Marabou Oreo 200g";
-    private Amount price;
+    private Cash price;
     private float cost = 23;
     private String currency = "SEK";
 
     @BeforeEach
     public void setUp() {
-        price = new Amount(cost, currency);
+        price = new Cash(cost, currency);
         testItem = new Item(itemID, name, rateOfVAT, 
                 description, price);
     }

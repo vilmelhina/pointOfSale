@@ -2,14 +2,14 @@ package se.kth.iv1350.POS.integration;
 
 import se.kth.iv1350.POS.model.Item;
 import se.kth.iv1350.POS.model.ShoppingCart;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  * Communicates with an inventory system.
  */
 public class InventorySystem {
 
-        private Item[] fakeItemList = new Item[5];
+        private final Item[] fakeItemList = new Item[5];
     
         /**
          * Creates an instance. Currently creates instances of fake "items" to
@@ -17,15 +17,15 @@ public class InventorySystem {
          */
 	InventorySystem() {
             fakeItemList[0] = new Item(0, "Chocolate", 0.2, "dsc", 
-                    new Amount(15, "SEK"));
+                    new Cash(15, "SEK"));
             fakeItemList[1] = new Item(1, "Milk", 0.15, "dsc", 
-                    new Amount(12, "SEK"));
+                    new Cash(12, "SEK"));
             fakeItemList[2] = new Item(2, "Carrot", 0.1, "dsc", 
-                    new Amount(2, "SEK"));
+                    new Cash(2, "SEK"));
             fakeItemList[3] = new Item(3, "Banana", 0.15, "dsc", 
-                    new Amount(5, "SEK"));
+                    new Cash(5, "SEK"));
             fakeItemList[4] = new Item(4, "Pepsi", 0.2, "dsc", 
-                    new Amount(25, "SEK"));
+                    new Cash(25, "SEK"));
 	}
 
         /**
@@ -34,8 +34,9 @@ public class InventorySystem {
          * @param itemID
          * @return the item that was requested.
          */
-	public Item getItemInfo(int itemID) {
+	public Item getItemInfo(int itemID){
             return fakeItemList[itemID];
+            
 	}
 
         /**

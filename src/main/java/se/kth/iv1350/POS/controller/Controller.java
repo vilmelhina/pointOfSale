@@ -4,7 +4,7 @@ import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
 import se.kth.iv1350.POS.model.Item;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  * The controller for the POS-system. All calls to the model pass through this 
@@ -55,7 +55,7 @@ public class Controller {
      * Returns the total of the current shopping cart, including VAT.
      * @return the total cost of the shopping cart, including VAT
      */
-    public Amount getTotalOfSale() {
+    public Cash getTotalOfSale() {
         return shoppingCart.getTotal();
     }
 
@@ -64,7 +64,7 @@ public class Controller {
      * receipt printer.
      * @param amountPaid how much was paid
      */
-    public void pay(Amount amountPaid) {
+    public void pay(Cash amountPaid) {
         sale.addPayment(amountPaid);
     }
 

@@ -2,7 +2,7 @@ package se.kth.iv1350.POS.model;
 
 import java.util.ArrayList;
 import se.kth.iv1350.POS.integration.InventorySystem;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  * Represents a shopping cart containing all items that are being bought.
@@ -30,13 +30,10 @@ public class ShoppingCart {
          */
 	public Item registerItem(int itemID, int quantity) {
             Item registeredItem = searchForItemInSale(itemID);
-            boolean foundItemInSale = (registeredItem != null);
-            if(foundItemInSale) {
+            if(registeredItem != null)
                 registeredItem.increaseQuantity(quantity);
-            }
-            else {
+            else
                 registeredItem = registerNewItem(itemID, quantity);
-            }
             return registeredItem;
 	}
         
@@ -51,26 +48,25 @@ public class ShoppingCart {
          * Get the total cost of the sale.
          * @return total cost of the sale
          */
-	public Amount getTotal() {
+	public Cash getTotal() {
             return getSubTotal().add(getVAT());
 	}
         
-        Amount getSubTotal() {
-            Amount total = new Amount(0, getCurrencyOfCart());
+        Cash getSubTotal() {
+            Cash total = new Cash(0, getCurrencyOfCart());
             for (Item item : items) {
                 total = total.add(item.getPrice());
             }
             return total;
         }
         
-        Amount getVAT() {
-            Amount totalVAT = new Amount(0, getCurrencyOfCart());
+        Cash getVAT() {
+            Cash totalVAT = new Cash(0, getCurrencyOfCart());
             for (Item item : items) {
                 totalVAT = totalVAT.add(item.getVATAmount());
             }
             return totalVAT;
         }
-        
         
         /**
          * Gets the currency of the first item in the cart.

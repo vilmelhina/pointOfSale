@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.integration.InventorySystem;
-import se.kth.iv1350.POS.util.Amount;
+import se.kth.iv1350.POS.util.Cash;
 
 /**
  *
@@ -31,9 +31,15 @@ public class ShoppingCartTest {
         testCart = null;
     }
 
-    /**
-     * Test of registerItem method, of class ShoppingCart.
-     */
+    @Test
+    public void testNewItem() {
+        testCart.registerItem(itemID, 3);
+        int expectedNumberOfItems = 1;
+        int numberOfItems = testCart.getNumberOfItems();
+        assertEquals(expectedNumberOfItems, numberOfItems,
+                "Item was not added to cart.");
+    }
+    
     @Test
     public void testSameItemAgain() {
         int quantity1 = 3;
@@ -46,15 +52,20 @@ public class ShoppingCartTest {
     }
     
     @Test
+    public void testWrongItemID() {
+        testCart.registerItem(6, 1);
+    }
+    
+    @Test
     public void testGetTotal() {
         Item testItem1 = testCart.registerItem(itemID, 1);
         Item testItem2 = testCart.registerItem(otherItemID, 1);
-        Amount price1 = testItem1.getPrice();
-        Amount price2 = testItem2.getPrice();
-        Amount vat1 = price1.multiply(testItem1.getVAT());
-        Amount vat2 = price2.multiply(testItem2.getVAT());
+        Cash price1 = testItem1.getPrice();
+        Cash price2 = testItem2.getPrice();
+        Cash vat1 = price1.multiply(testItem1.getVAT());
+        Cash vat2 = price2.multiply(testItem2.getVAT());
         
-        Amount expectedTotal = price1.add(price2).add(vat1).add(vat2);
+        Cash expectedTotal = price1.add(price2).add(vat1).add(vat2);
         System.out.println(expectedTotal.getAmount());
         assertEquals(expectedTotal.getAmount(), testCart.getTotal().getAmount(),
                 "Shopping cart total is incorrect.");
