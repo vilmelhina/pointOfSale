@@ -1,7 +1,7 @@
 package se.kth.iv1350.POS.view;
 
 import se.kth.iv1350.POS.controller.Controller;
-import se.kth.iv1350.POS.util.Cash;
+import se.kth.iv1350.POS.model.Cash;
 
 /**
  * Placeholder class for the view of the program. Contains a fake scenario that

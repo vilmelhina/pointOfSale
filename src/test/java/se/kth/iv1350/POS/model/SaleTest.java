@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.integration.InventorySystem;
-import se.kth.iv1350.POS.util.Cash;
 import java.time.LocalDateTime;
 
 /**

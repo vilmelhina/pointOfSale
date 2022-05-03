@@ -4,7 +4,7 @@ import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
 import se.kth.iv1350.POS.model.Item;
-import se.kth.iv1350.POS.util.Cash;
+import se.kth.iv1350.POS.model.Cash;
 
 /**
  * The controller for the POS-system. All calls to the model pass through this 

@@ -1,5 +1,5 @@
 package se.kth.iv1350.POS.integration;
-import se.kth.iv1350.POS.util.Cash;
+import se.kth.iv1350.POS.model.Cash;
 
 /**
  * Handles communication with the cash register.

@@ -2,7 +2,6 @@ package se.kth.iv1350.POS.model;
 
 import java.util.ArrayList;
 import se.kth.iv1350.POS.integration.InventorySystem;
-import se.kth.iv1350.POS.util.Cash;
 
 /**
  * Represents a shopping cart containing all items that are being bought.

@@ -1,7 +1,5 @@
 package se.kth.iv1350.POS.model;
 
-import se.kth.iv1350.POS.util.Cash;
-
 /**
  * Represents an item that can be bought.
  */

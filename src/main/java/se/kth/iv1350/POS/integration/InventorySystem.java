@@ -2,7 +2,7 @@ package se.kth.iv1350.POS.integration;
 
 import se.kth.iv1350.POS.model.Item;
 import se.kth.iv1350.POS.model.ShoppingCart;
-import se.kth.iv1350.POS.util.Cash;
+import se.kth.iv1350.POS.model.Cash;
 
 /**
  * Communicates with an inventory system.

@@ -1,4 +1,4 @@
-package se.kth.iv1350.POS.util;
+package se.kth.iv1350.POS.model;
 
 /**
  * Represents a specified amount of money in a specific currency.
@@ -23,7 +23,8 @@ public class Cash {
      * @param cashToAdd the amount to add 
      * @return a new Cash with the sum
      */
-    public Cash add(Cash cashToAdd) {
+    Cash add(Cash cashToAdd) {
+        // TODO: exception if other currency
         Cash result = new Cash(amount + cashToAdd.getAmount(), 
                 currency);
         return result;
@@ -34,7 +35,7 @@ public class Cash {
      * @param cashToSubtract the amount to subtract 
      * @return a new Cash with the difference
      */
-    public Cash subtract(Cash cashToSubtract) {
+    Cash subtract(Cash cashToSubtract) {
         // TODO: exception if other currency
         Cash result = new Cash(amount - cashToSubtract.getAmount(), 
                 currency);
@@ -46,8 +47,7 @@ public class Cash {
      * @param multiplier what the Cash should be multiplied with
      * @return the new multiplied Cash
      */
-    public Cash multiply(double multiplier) {
-        // TODO: exception if other currency
+    Cash multiply(double multiplier) {
         Cash result = new Cash(amount * multiplier, 
                 currency);
         return result;
@@ -57,7 +57,7 @@ public class Cash {
      * Returns the amount of cash.
      * @return the amount
      */
-    public double getAmount() {
+    double getAmount() {
         return amount;
     }
     
@@ -65,7 +65,7 @@ public class Cash {
      * Returns the currency of the Cash
      * @return the currency as a String
      */
-    public String getCurrency() {
+    String getCurrency() {
         return currency;
     }
 
