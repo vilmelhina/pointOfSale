@@ -106,7 +106,8 @@ public class Item {
      * Formats the Item into a string for printing the receipt.
      */
     public String toString() {
-        return String.format("%-3d %-16s %10s", quantity, name, price.multiply(quantity));
+        return String.format("%-3d %-16s %3d * %9s", 
+                itemID, name, quantity, price);
     }
     
 }

@@ -71,4 +71,28 @@ public class ShoppingCartTest {
         assertEquals(expectedTotal.getAmount(), testCart.getTotal().getAmount(),
                 "Shopping cart total is incorrect.");
     }
+    
+    @Test
+    public void testGetSubTotal() {
+        Item testItem1 = testCart.registerItem(itemID, 1);
+        Item testItem2 = testCart.registerItem(otherItemID, 1);
+        Cash price1 = testItem1.getPrice();
+        Cash price2 = testItem2.getPrice();
+        double expectedSubtotal = price1.add(price2).getAmount();
+        double actualSubtotal = testCart.getSubTotal().getAmount();
+        assertEquals(expectedSubtotal, actualSubtotal,
+                "Shopping cart subtotal is incorrect.");
+    }
+    
+    @Test
+    public void testGetVAT() {
+        Item testItem1 = testCart.registerItem(itemID, 1);
+        Item testItem2 = testCart.registerItem(otherItemID, 1);
+        Cash vat1 = testItem1.getVATAmount();
+        Cash vat2 = testItem2.getVATAmount();
+        double expectedVAT = vat1.add(vat2).getAmount();
+        double actualVAT = testCart.getVAT().getAmount();
+        assertEquals(expectedVAT, actualVAT,
+                "Shopping cart VAT is incorrect.");
+    }
 }

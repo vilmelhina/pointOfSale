@@ -1,6 +1,5 @@
 package se.kth.iv1350.POS.model;
 
-import java.time.LocalDateTime;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +16,7 @@ public class SaleTest {
     private IntegrationHandler integrationHandler;
     private InventorySystem inventorySystem;
     private ShoppingCart shoppingCart;
+    private Item itemInCart;
     private Sale sale;
     
     @BeforeEach
@@ -24,6 +24,7 @@ public class SaleTest {
         integrationHandler = new IntegrationHandler();
         inventorySystem = integrationHandler.getInventorySystem();
         shoppingCart = new ShoppingCart(inventorySystem);
+        itemInCart = shoppingCart.registerItem(0, 1);
         sale = new Sale(shoppingCart, integrationHandler);
     }
     
@@ -42,5 +43,15 @@ public class SaleTest {
         assertEquals(expectedTime, actualTime, "Time of sale was incorrect.");
         
     }
-
+    
+    @Test
+    public void testGetChange() {
+        Cash costOfSale = 
+                itemInCart.getPrice().add(itemInCart.getVATAmount());
+        Cash amountPaid = new Cash(40, "SEK");
+        sale.addPayment(amountPaid);
+        double expectedChange = amountPaid.subtract(costOfSale).getAmount();
+        double actualChange = sale.getChange().getAmount();
+        assertEquals(expectedChange, actualChange, "Change for sale is wrong.");
+    }
 }

@@ -7,19 +7,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemTest {
     private Item testItem; 
-    private int itemID = 124;
-    private String name = "Chocolate";
-    private double rateOfVAT = 0.3;
-    private String description = "Marabou Oreo 200g";
+    private final int itemID = 124;
+    private final String name = "Chocolate";
+    private final double rateOfVAT = 0.3;
+    private final String description = "Marabou Oreo 200g";
     private Cash price;
-    private float cost = 23;
-    private String currency = "SEK";
+    private final float cost = 23;
+    private final String currency = "SEK";
+    private int quantity = 5;
 
     @BeforeEach
     public void setUp() {
         price = new Cash(cost, currency);
         testItem = new Item(itemID, name, rateOfVAT, 
                 description, price);
+        testItem.setQuantity(quantity);
     }
     
     @AfterEach
@@ -30,9 +32,7 @@ public class ItemTest {
 
     @Test
     public void testIncreaseQuantity() {
-        int quantity = 5;
         int increaseAmount = 7;
-        testItem.setQuantity(quantity);
         testItem.increaseQuantity(increaseAmount);
         assertEquals(quantity + increaseAmount, testItem.getQuantity(), 
                 "Item did not have correct quantity when increasing quantity.");
@@ -45,4 +45,18 @@ public class ItemTest {
         assertEquals(expectedVATAmount, actualVATAmount, 
                 "VAT amount was not right.");
     }
+    
+    @Test
+    public void testToString() {
+        String result = testItem.toString();
+        System.out.println(testItem);
+        System.out.println(result);
+        boolean containsItemID = result.contains(Integer.toString(itemID));
+        boolean containsQuantity = result.contains(Integer.toString(quantity));
+        boolean containsName = result.contains(name);
+        boolean containsPrice = 
+                result.contains(Double.toString(cost));
+        assertTrue(containsItemID && containsQuantity && containsName && 
+                containsPrice, "String does not have all information");
+    }   
 }

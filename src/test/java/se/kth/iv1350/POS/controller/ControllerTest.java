@@ -29,6 +29,16 @@ public class ControllerTest {
         controller = null;
     }
     
+    @Test
+    public void testStartSale() {
+        controller.startSale();
+        try {
+            controller.registerItem(0);
+        } catch (NullPointerException e) {
+            fail("No instance of ShoppingCart was created in startSale");
+        }
+    }
+    
     // When there is exception handling in the inventory system, change this to 
     // make sure it either gives exception or gives back Item (!= null)
     @Test
@@ -49,6 +59,17 @@ public class ControllerTest {
                 + registeredItem2.getVATAmount().getAmount();
         double total = controller.getTotalOfSale().getAmount();
         assertEquals(total, expectedTotal, "Total of sale was incorrect"); 
+    }
+    
+    @Test
+    public void testEndSale() {
+        controller.startSale();
+        controller.endSale();
+        try {
+            controller.pay(new Cash(100, "SEK"));
+        } catch (NullPointerException e) {
+            fail("No instance of Sale was created in endSale");
+        }
     }
 
 }
