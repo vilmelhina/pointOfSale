@@ -51,14 +51,14 @@ public class ControllerTest {
     @Test
     public void testGetTotalOfSale() {
         controller.startSale();
-        Item registeredItem1 = controller.registerItem(2);
+        Item registeredItem1 = controller.registerItem(2,2);
         Item registeredItem2 = controller.registerItem(4);
-        double expectedTotal = registeredItem1.getPrice().getAmount()
-                + registeredItem1.getVATAmount().getAmount()
+        double expectedTotal = 2 * (registeredItem1.getPrice().getAmount()
+                + registeredItem1.getVATAmount().getAmount())
                 + registeredItem2.getPrice().getAmount()
                 + registeredItem2.getVATAmount().getAmount();
         double total = controller.getTotalOfSale().getAmount();
-        assertEquals(total, expectedTotal, "Total of sale was incorrect"); 
+        assertEquals(expectedTotal, total, "Total of sale was incorrect"); 
     }
     
     @Test

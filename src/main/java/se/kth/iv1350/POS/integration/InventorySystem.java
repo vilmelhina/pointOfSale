@@ -16,21 +16,21 @@ public class InventorySystem {
          * demonstrate the program.
          */
 	InventorySystem() {
-            fakeItemList[0] = new Item(0, "Chocolate", 0.2, "dsc", 
+            fakeItemList[0] = new Item(0, "Chocolate", 0.2, 
                     new Cash(15, "SEK"));
-            fakeItemList[1] = new Item(1, "Milk", 0.15, "dsc", 
+            fakeItemList[1] = new Item(1, "Milk", 0.15, 
                     new Cash(12, "SEK"));
-            fakeItemList[2] = new Item(2, "Carrot", 0.1, "dsc", 
+            fakeItemList[2] = new Item(2, "Carrot", 0.1, 
                     new Cash(2, "SEK"));
-            fakeItemList[3] = new Item(3, "Banana", 0.15, "dsc", 
+            fakeItemList[3] = new Item(3, "Banana", 0.15, 
                     new Cash(5, "SEK"));
-            fakeItemList[4] = new Item(4, "Pepsi", 0.2, "dsc", 
+            fakeItemList[4] = new Item(4, "Pepsi", 0.2, 
                     new Cash(25, "SEK"));
 	}
 
         /**
          * Placeholder for a method that takes an item ID and returns an Item
-         * containing available information from the inventory system.
+ containing available information from the inventory system.
          * @param itemID
          * @return the item that was requested.
          */

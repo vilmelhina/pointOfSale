@@ -54,7 +54,7 @@ public class ShoppingCart {
         Cash getSubTotal() {
             Cash total = new Cash(0, getCurrencyOfCart());
             for (Item item : items) {
-                total = total.add(item.getPrice());
+                total = total.add(item.getPrice().multiply(item.getQuantity()));
             }
             return total;
         }
@@ -62,7 +62,8 @@ public class ShoppingCart {
         Cash getVAT() {
             Cash totalVAT = new Cash(0, getCurrencyOfCart());
             for (Item item : items) {
-                totalVAT = totalVAT.add(item.getVATAmount());
+                totalVAT = totalVAT.add(item.getVATAmount()
+                        .multiply(item.getQuantity()));
             }
             return totalVAT;
         }

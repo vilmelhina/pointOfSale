@@ -6,26 +6,23 @@ package se.kth.iv1350.POS.model;
 public class Item {
 
     private final int itemID;
-    private final java.lang.String name;
+    private final String description;
     private final double rateOfVAT;
-    private final java.lang.String description;
     private final Cash price;
     private int quantity;
 
     /**
      * Creates an instance.
      * @param itemID the ID of the item
-     * @param name the name
+     * @param name the description
      * @param rateOfVAT the VAT rate for the item, (where 1 is 100%)
-     * @param description the description of the item
      * @param price the price of the item
      */
-    public Item(int itemID, String name, double rateOfVAT, String description, 
+    public Item(int itemID, String name, double rateOfVAT, 
             Cash price) {
         this.itemID = itemID;
-        this.name = name;
+        this.description = name;
         this.rateOfVAT = rateOfVAT;
-        this.description = description;
         this.price = price;
     }
 
@@ -54,11 +51,11 @@ public class Item {
     }
 
     /**
-     * Get the name of the item
-     * @return the name of the item
+     * Get the Item of the item
+     * @return the Item of the item
      */
-    public java.lang.String getName() {
-        return name;
+    public java.lang.String getDescription() {
+        return description;
     }
 
     /**
@@ -67,14 +64,6 @@ public class Item {
      */
     public double getVAT() {
         return rateOfVAT;
-    }
-
-    /**
-     * Get the description of the item
-     * @return the description of the item
-     */
-    public String getDescription() {
-        return description;
     }
 
     /**
@@ -107,7 +96,7 @@ public class Item {
      */
     public String toString() {
         return String.format("%-3d %-16s %3d * %9s", 
-                itemID, name, quantity, price);
+                itemID, description, quantity, price);
     }
     
 }

@@ -8,9 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ItemTest {
     private Item testItem; 
     private final int itemID = 124;
-    private final String name = "Chocolate";
+    private final String description = "Chocolate";
     private final double rateOfVAT = 0.3;
-    private final String description = "Marabou Oreo 200g";
     private Cash price;
     private final float cost = 23;
     private final String currency = "SEK";
@@ -19,8 +18,7 @@ public class ItemTest {
     @BeforeEach
     public void setUp() {
         price = new Cash(cost, currency);
-        testItem = new Item(itemID, name, rateOfVAT, 
-                description, price);
+        testItem = new Item(itemID, description, rateOfVAT, price);
         testItem.setQuantity(quantity);
     }
     
@@ -53,7 +51,7 @@ public class ItemTest {
         System.out.println(result);
         boolean containsItemID = result.contains(Integer.toString(itemID));
         boolean containsQuantity = result.contains(Integer.toString(quantity));
-        boolean containsName = result.contains(name);
+        boolean containsName = result.contains(description);
         boolean containsPrice = 
                 result.contains(Double.toString(cost));
         assertTrue(containsItemID && containsQuantity && containsName && 
