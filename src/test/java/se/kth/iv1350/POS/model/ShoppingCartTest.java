@@ -8,10 +8,6 @@ import org.junit.jupiter.api.Disabled;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.integration.InventorySystem;
 
-/**
- *
- * @author vilhelmina
- */
 public class ShoppingCartTest {
     private IntegrationHandler integrationHandler;
     private InventorySystem inventorySystem;
