@@ -38,13 +38,11 @@ public class ShoppingCartTest {
     
     @Test
     public void testSameItemAgain() {
-        int quantity1 = 3;
-        int quantity2 = 7;
-        testCart.registerItem(itemID, quantity1);
-        Item testItem = testCart.registerItem(itemID, quantity2);
-        assertEquals(quantity1 + quantity2, testItem.getQuantity(),
-                "Scanning the same item again does not give the right "
-                        + "quantity");
+        testCart.registerItem(itemID, 2);
+        testCart.registerItem(itemID, 7);
+        int numberOfItems = testCart.getNumberOfItems();
+        assertEquals(1, numberOfItems,
+                "Scanning the same item again does not add to the same item.");
     }
     
     // Will be used when exceptions are added to the code.
@@ -56,12 +54,15 @@ public class ShoppingCartTest {
     @Test
     public void testGetTotal() {
         int quantity1 = 2;
-        int quantity2 = 3;
-        Item testItem1 = testCart.registerItem(itemID, quantity1);
-        Item testItem2 = testCart.registerItem(otherItemID, quantity2);
+        Item testItem1 = inventorySystem.getItemInfo(itemID);
+        testCart.registerItem(itemID, quantity1);
         Cash price1 = testItem1.getPrice();
-        Cash price2 = testItem2.getPrice();
         Cash vat1 = price1.multiply(testItem1.getVAT());
+        
+        int quantity2 = 3;
+        Item testItem2 = inventorySystem.getItemInfo(otherItemID);
+        testCart.registerItem(otherItemID, quantity2);
+        Cash price2 = testItem2.getPrice();
         Cash vat2 = price2.multiply(testItem2.getVAT());
         
         double expTotal = quantity1 * (price1.getAmount() + vat1.getAmount())
@@ -73,11 +74,15 @@ public class ShoppingCartTest {
     @Test
     public void testGetSubTotal() {
         int quantity1 = 2;
-        int quantity2 = 3;
-        Item testItem1 = testCart.registerItem(itemID, quantity1);
-        Item testItem2 = testCart.registerItem(otherItemID, quantity2);
+        Item testItem1 = inventorySystem.getItemInfo(itemID);
+        testCart.registerItem(itemID, quantity1);
         Cash price1 = testItem1.getPrice().multiply(quantity1);
+        
+        int quantity2 = 3;
+        Item testItem2 = inventorySystem.getItemInfo(otherItemID);
+        testCart.registerItem(otherItemID, quantity2);
         Cash price2 = testItem2.getPrice().multiply(quantity2);
+        
         double expectedSubtotal = price1.add(price2).getAmount();
         double actualSubtotal = testCart.getSubTotal().getAmount();
         assertEquals(expectedSubtotal, actualSubtotal,
@@ -87,11 +92,15 @@ public class ShoppingCartTest {
     @Test
     public void testGetVAT() {
         int quantity1 = 2;
-        int quantity2 = 3;
-        Item testItem1 = testCart.registerItem(itemID, quantity1);
-        Item testItem2 = testCart.registerItem(otherItemID, quantity2);
+        Item testItem1 = inventorySystem.getItemInfo(itemID);
+        testCart.registerItem(itemID, quantity1);
         Cash vat1 = testItem1.getVATAmount().multiply(quantity1);
+        
+        int quantity2 = 3;
+        Item testItem2 = inventorySystem.getItemInfo(otherItemID);
+        testCart.registerItem(otherItemID, quantity2);
         Cash vat2 = testItem2.getVATAmount().multiply(quantity2);
+        
         double expectedVAT = vat1.add(vat2).getAmount();
         double actualVAT = testCart.getVAT().getAmount();
         assertEquals(expectedVAT, actualVAT,
