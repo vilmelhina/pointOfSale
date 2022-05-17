@@ -27,13 +27,13 @@ public class ShoppingCart {
          * @param quantity the quantity of the item
          * @return the registered item
          */
-	public Item registerItem(int itemID, int quantity) {
+	public ItemInfoDTO registerItem(int itemID, int quantity) {
             Item registeredItem = searchForItemInSale(itemID);
             if(registeredItem != null)
                 registeredItem.increaseQuantity(quantity);
             else
                 registeredItem = registerNewItem(itemID, quantity);
-            return registeredItem;
+            return new ItemInfoDTO(registeredItem);
 	}
         
         private Item registerNewItem(int itemID, int quantity) {

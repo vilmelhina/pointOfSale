@@ -2,7 +2,7 @@ package se.kth.iv1350.POS.view;
 
 import se.kth.iv1350.POS.controller.Controller;
 import se.kth.iv1350.POS.model.Cash;
-import se.kth.iv1350.POS.model.Item;
+import se.kth.iv1350.POS.model.ItemInfoDTO;
 
 /**
  * Placeholder class for the view of the program. Contains a fake scenario that
@@ -41,7 +41,7 @@ public class View {
         }
         
         private void registerItemAndPrintInfo(int itemID, int quantity) {
-            Item registeredItem = controller.registerItem(itemID, quantity);
+            ItemInfoDTO registeredItem = controller.registerItem(itemID, quantity);
             System.out.println("Scanned item: " + 
                     registeredItem.getDescription() + ", " +
                     registeredItem.getPrice());

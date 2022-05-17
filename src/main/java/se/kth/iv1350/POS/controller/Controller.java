@@ -3,8 +3,8 @@ package se.kth.iv1350.POS.controller;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
 import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
-import se.kth.iv1350.POS.model.Item;
 import se.kth.iv1350.POS.model.Cash;
+import se.kth.iv1350.POS.model.ItemInfoDTO;
 
 /**
  * The controller for the POS-system. All calls to the model pass through this 
@@ -35,8 +35,8 @@ public class Controller {
      * @param quantity the quantity of the item to add to the sale.
      * @return the item that was registered
      */
-    public Item registerItem(int itemID, int quantity) {
-        Item registeredItem = shoppingCart.registerItem(itemID, quantity);
+    public ItemInfoDTO registerItem(int itemID, int quantity) {
+        ItemInfoDTO registeredItem = shoppingCart.registerItem(itemID, quantity);
         return registeredItem;
     }
 
@@ -46,8 +46,8 @@ public class Controller {
      * @param itemID the ID of the item.
      * @return the item that was registered
      */
-    public Item registerItem(int itemID) {
-        Item registeredItem = shoppingCart.registerItem(itemID, 1);
+    public ItemInfoDTO registerItem(int itemID) {
+        ItemInfoDTO registeredItem = shoppingCart.registerItem(itemID, 1);
         return registeredItem;
     }
 
