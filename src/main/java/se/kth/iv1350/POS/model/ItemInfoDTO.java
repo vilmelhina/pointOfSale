@@ -19,7 +19,7 @@ public class ItemInfoDTO {
     }
 
     /**
-     * Returns the description of the reffered item.
+     * Returns the description of the referred item.
      * @return the description
      */
     public String getDescription() {
