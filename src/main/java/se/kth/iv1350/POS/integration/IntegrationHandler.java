@@ -1,5 +1,7 @@
 package se.kth.iv1350.POS.integration;
 
+import se.kth.iv1350.POS.model.Register;
+
 /**
  * Creates all external system handlers: AccountingSyste, DiscountDatabase, 
  * InventorySystem, SaleLog, Register.

@@ -7,7 +7,11 @@ import java.time.LocalDateTime;
  */
 public class ErrorMessageHandler {
     
-    void ShowErrorMessage(String message) {
+    /**
+     * Prints error message to UI.
+     * @param message the error message to be printed.
+     */
+    void showErrorMessage(String message) {
         System.out.println("🛑 " + LocalDateTime.now() + " ERROR: " + message);
     }
     

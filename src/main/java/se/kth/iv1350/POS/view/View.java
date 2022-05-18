@@ -50,7 +50,7 @@ public class View {
             
             System.out.println("Starting sale.");
             controller.startSale();
-            System.out.println("Breaking the \"database\"");
+            System.out.println("Breaking the \"database\":");
             registerItemAndPrintInfo(404, 1);
         }
         
@@ -65,8 +65,8 @@ public class View {
                         registeredItem.getPrice());
                 System.out.println("Running total: " +
                         controller.getTotalOfSale());
-            } catch(ConnectionIssueException | ItemNotFoundException ex) {
-                errorMessageHandler.ShowErrorMessage(ex.getMessage());
+            } catch(ItemNotFoundException | ConnectionIssueException ex) {
+                errorMessageHandler.showErrorMessage(ex.getMessage());
             }
         }
 

@@ -7,6 +7,7 @@ import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
 import se.kth.iv1350.POS.model.Cash;
 import se.kth.iv1350.POS.model.ItemInfoDTO;
+import se.kth.iv1350.POS.util.ExceptionLogger;
 
 /**
  * The controller for the POS-system. All calls to the model pass through this 
@@ -46,6 +47,7 @@ public class Controller {
                 shoppingCart.registerItem(itemID, quantity);
         return registeredItem;
         } catch (InventorySystemException exception) {
+            ExceptionLogger.logException(exception);
             throw new ConnectionIssueException();
         }
     }

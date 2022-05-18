@@ -1,6 +1,5 @@
 package se.kth.iv1350.POS.model;
 
-import se.kth.iv1350.POS.integration.Register;
 import se.kth.iv1350.POS.integration.AccountingSystem;
 import se.kth.iv1350.POS.integration.SaleLog;
 import se.kth.iv1350.POS.integration.IntegrationHandler;
