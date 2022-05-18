@@ -1,6 +1,8 @@
 package se.kth.iv1350.POS.controller;
 
 import se.kth.iv1350.POS.integration.IntegrationHandler;
+import se.kth.iv1350.POS.integration.InventorySystemException;
+import se.kth.iv1350.POS.integration.ItemNotFoundException;
 import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
 import se.kth.iv1350.POS.model.Cash;
@@ -29,26 +31,36 @@ public class Controller {
     }
 
     /**
-     * Registers a new item to the sale. If the item ID exists, then the 
+     * Registers a new item to the sale.If the item ID exists, then the 
      * specified quantity of the item is added to the sale.
      * @param itemID the ID of the item
      * @param quantity the quantity of the item to add to the sale.
      * @return the item that was registered
+     * @throws ItemNotFoundException if no Item was found with that ID
+     * @throws ConnectionIssueException if database connection failed
      */
-    public ItemInfoDTO registerItem(int itemID, int quantity) {
-        ItemInfoDTO registeredItem = shoppingCart.registerItem(itemID, quantity);
+    public ItemInfoDTO registerItem(int itemID, int quantity) 
+            throws ItemNotFoundException {
+        try {
+            ItemInfoDTO registeredItem = 
+                shoppingCart.registerItem(itemID, quantity);
         return registeredItem;
+        } catch (InventorySystemException exception) {
+            throw new ConnectionIssueException();
+        }
     }
 
     /**
-     * Registers a new item to the sale. If the item ID exists, them the item
+     * Registers a new item to the sale.If the item ID exists, them the item 
      * is added to the sale.
      * @param itemID the ID of the item.
      * @return the item that was registered
+     * @throws ItemNotFoundException if no Item was found with that ID
+     * @throws ConnectionIssueException if database connection failed
      */
-    public ItemInfoDTO registerItem(int itemID) {
-        ItemInfoDTO registeredItem = shoppingCart.registerItem(itemID, 1);
-        return registeredItem;
+    public ItemInfoDTO registerItem(int itemID) throws ItemNotFoundException,
+                                                    ConnectionIssueException {
+        return registerItem(itemID, 1);
     }
 
     /**

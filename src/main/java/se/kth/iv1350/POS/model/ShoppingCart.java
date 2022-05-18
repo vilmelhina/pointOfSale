@@ -2,6 +2,8 @@ package se.kth.iv1350.POS.model;
 
 import java.util.ArrayList;
 import se.kth.iv1350.POS.integration.InventorySystem;
+import se.kth.iv1350.POS.integration.InventorySystemException;
+import se.kth.iv1350.POS.integration.ItemNotFoundException;
 
 /**
  * Represents a shopping cart containing all items that are being bought.
@@ -21,13 +23,15 @@ public class ShoppingCart {
 	}
 
         /**
-         * Registers an item. Checks if it exists in the inventory system.
+         * Registers an item.Checks if it exists in the inventory system. 
          * Adds it to the cart if it does.
          * @param itemID the ID of the item to be registered
          * @param quantity the quantity of the item
          * @return the registered item
+         * @throws ItemNotFoundException if the item ID doesn't match any item
          */
-	public ItemInfoDTO registerItem(int itemID, int quantity) {
+	public ItemInfoDTO registerItem(int itemID, int quantity) 
+                throws ItemNotFoundException, InventorySystemException {
             Item registeredItem = searchForItemInSale(itemID);
             if(registeredItem != null)
                 registeredItem.increaseQuantity(quantity);
@@ -36,7 +40,8 @@ public class ShoppingCart {
             return new ItemInfoDTO(registeredItem);
 	}
         
-        private Item registerNewItem(int itemID, int quantity) {
+        private Item registerNewItem(int itemID, int quantity) 
+                throws ItemNotFoundException, InventorySystemException {
             Item registeredItem = inventorySystem.getItemInfo(itemID);
             registeredItem.setQuantity(quantity);
             addItem(registeredItem);

@@ -10,6 +10,7 @@ import se.kth.iv1350.POS.model.Cash;
 public class InventorySystem {
 
         private final Item[] fakeItemList = new Item[5];
+        private final int FAKEDATABASEPROBLEM = 404;
     
         /**
          * Creates an instance. Currently creates instances of fake "items" to
@@ -29,12 +30,23 @@ public class InventorySystem {
 	}
 
         /**
-         * Placeholder for a method that takes an item ID and returns an Item
- containing available information from the inventory system.
+         * Placeholder for a method that takes an item ID and returns an 
+         * Item containing available information from the inventory system.
          * @param itemID
          * @return the item that was requested.
+         * @throws ItemNotFoundException if there is no matching Item
+         * @throws InventorySystemException if there is a database problem
          */
-	public Item getItemInfo(int itemID){
+        // TODO: double check this comments
+	public Item getItemInfo(int itemID) throws ItemNotFoundException, 
+                                                InventorySystemException {
+            if(itemID == FAKEDATABASEPROBLEM) {
+                throw new InventorySystemException("Super detailed message"
+                        + "about the database connection problem");
+            }
+            else if (itemID < 0 || itemID >= fakeItemList.length) {
+                throw new ItemNotFoundException(itemID);
+            }
             return fakeItemList[itemID];
             
 	}
