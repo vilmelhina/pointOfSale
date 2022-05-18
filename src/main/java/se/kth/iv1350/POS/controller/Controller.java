@@ -7,6 +7,8 @@ import se.kth.iv1350.POS.model.ShoppingCart;
 import se.kth.iv1350.POS.model.Sale;
 import se.kth.iv1350.POS.model.Cash;
 import se.kth.iv1350.POS.model.ItemInfoDTO;
+import se.kth.iv1350.POS.model.Register;
+import se.kth.iv1350.POS.model.RegisterObserver;
 import se.kth.iv1350.POS.util.ExceptionLogger;
 
 /**
@@ -16,11 +18,13 @@ import se.kth.iv1350.POS.util.ExceptionLogger;
 public class Controller {
 
     private final IntegrationHandler integrationHandler;
+    private final Register register;
     private ShoppingCart shoppingCart;
     private Sale sale;
 
     public Controller(IntegrationHandler integrationHandler) {
         this.integrationHandler = integrationHandler;
+        this.register = new Register();
     }
 
     /**
@@ -86,7 +90,18 @@ public class Controller {
      * Ends the sale. Has to be called before a payment can be made.
      */
     public void endSale() {
-        sale = new Sale(shoppingCart, integrationHandler);
+        sale = new Sale(shoppingCart, integrationHandler, register);
+    }
+    
+    /**
+     * Adds an observer that will observe the Register and be updated when the
+     * total revenue changes.
+     * @param observer the observer that observes the Register
+     */
+    public void addRegisterObserver(RegisterObserver observer) {
+        register.addRentalObserver(observer);
+        register.addRentalObserver(integrationHandler.
+                getTotalRevenueFileOutput());
     }
 
 }

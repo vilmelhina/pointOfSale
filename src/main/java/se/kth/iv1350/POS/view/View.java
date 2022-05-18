@@ -1,9 +1,6 @@
 package se.kth.iv1350.POS.view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import se.kth.iv1350.POS.controller.Controller;
-import se.kth.iv1350.POS.integration.InventorySystemException;
 import se.kth.iv1350.POS.integration.ItemNotFoundException;
 import se.kth.iv1350.POS.model.Cash;
 import se.kth.iv1350.POS.controller.ConnectionIssueException;
@@ -17,6 +14,7 @@ public class View {
 
 	private final Controller controller;
         private ErrorMessageHandler errorMessageHandler;
+        private TotalRevenueView totalRevenueView;
 
         /**
          * Creates a new instance. Saves the specified Controller.
@@ -24,6 +22,8 @@ public class View {
          */
 	public View(Controller controller) {
             this.controller = controller;
+            totalRevenueView = new TotalRevenueView();
+            controller.addRegisterObserver(totalRevenueView);
             errorMessageHandler = new ErrorMessageHandler();
 	}
         

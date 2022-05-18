@@ -23,12 +23,15 @@ public class Sale {
          * Creates an instance of a sale
          * @param shoppingCart the shoppingCart with the items to be sold
          * @param integrationHandler the integration handler
+         * @param register the register that the sale uses
          */
-	public Sale(ShoppingCart shoppingCart, IntegrationHandler integrationHandler) {
+	public Sale(ShoppingCart shoppingCart, 
+                IntegrationHandler integrationHandler,
+                Register register) {
             this.shoppingCart = shoppingCart;
             this.accountingSystem = integrationHandler.getAccountingSystem();
             this.saleLog = integrationHandler.getSaleLog();
-            this.register = integrationHandler.getRegister();
+            this.register = register;
             setTimeOfSale();
             this.integrationHandler = integrationHandler;
 	}
@@ -46,7 +49,7 @@ public class Sale {
          */
 	public void addPayment(Cash amountPaid) {
             this.amountPaid = amountPaid;
-            register.addToRegister(amountPaid);
+            register.addToRegister(shoppingCart.getTotal());
             logSale();
             createReceipt().printReceipt();
 	}

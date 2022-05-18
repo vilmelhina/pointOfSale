@@ -1,29 +1,28 @@
 package se.kth.iv1350.POS.integration;
 
-import se.kth.iv1350.POS.model.Register;
-
 /**
- * Creates all external system handlers: AccountingSyste, DiscountDatabase, 
- * InventorySystem, SaleLog, Register.
+ * Creates all integration handlers: AccountingSyste, DiscountDatabase, 
+ * InventorySystem, SaleLog, TotalRevenueFileOutput.
  */
 public class IntegrationHandler {
 
     private AccountingSystem accountingSystem;
     private InventorySystem inventorySystem;
     private SaleLog saleLog;
-    private Register register;
     private ReceiptPrinter receiptPrinter;
+    private TotalRevenueFileOutput totalRevenueFileOutput;
+    
 
     /**
-     * Creates an instance, which in turn creates instances of the external
-     * system handlers.
+     * Creates an instance, which in turn creates instances of the integration 
+     * handlers.
      */
     public IntegrationHandler() {
         accountingSystem = new AccountingSystem();
         inventorySystem = new InventorySystem();
         saleLog = new SaleLog();
-        register = new Register();
         receiptPrinter = new ReceiptPrinter();
+        totalRevenueFileOutput = new TotalRevenueFileOutput();
     }
 
     /**
@@ -51,14 +50,6 @@ public class IntegrationHandler {
     }
     
     /**
-     * Returns the created instance of the register handler.
-     * @return the register handler
-     */
-    public Register getRegister() {
-        return register;
-    }
-    
-    /**
      * Returns the created instance of the receipt Printer.
      * @return the register handler
      */
@@ -66,4 +57,7 @@ public class IntegrationHandler {
         return receiptPrinter;
     }
 
+    public TotalRevenueFileOutput getTotalRevenueFileOutput() {
+        return totalRevenueFileOutput;
+    }
 }

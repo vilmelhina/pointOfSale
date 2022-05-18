@@ -12,7 +12,7 @@ public class ErrorMessageHandler {
      * @param message the error message to be printed.
      */
     void showErrorMessage(String message) {
-        System.out.println("🛑 " + LocalDateTime.now() + " ERROR: " + message);
+        System.out.println("🛑 INTENDED FOR UI:  " + LocalDateTime.now() + " ERROR: " + message);
     }
     
 }

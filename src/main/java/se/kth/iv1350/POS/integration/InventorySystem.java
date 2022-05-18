@@ -37,7 +37,6 @@ public class InventorySystem {
          * @throws ItemNotFoundException if there is no matching Item
          * @throws InventorySystemException if there is a database problem
          */
-        // TODO: double check this comments
 	public Item getItemInfo(int itemID) throws ItemNotFoundException, 
                                                 InventorySystemException {
             if(itemID == FAKEDATABASEPROBLEM) {
