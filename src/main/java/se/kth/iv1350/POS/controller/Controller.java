@@ -25,6 +25,8 @@ public class Controller {
     public Controller(IntegrationHandler integrationHandler) {
         this.integrationHandler = integrationHandler;
         this.register = new Register();
+        addRegisterObserver(integrationHandler.
+                getTotalRevenueFileOutput());
     }
 
     /**
@@ -100,8 +102,6 @@ public class Controller {
      */
     public void addRegisterObserver(RegisterObserver observer) {
         register.addRentalObserver(observer);
-        register.addRentalObserver(integrationHandler.
-                getTotalRevenueFileOutput());
     }
 
 }

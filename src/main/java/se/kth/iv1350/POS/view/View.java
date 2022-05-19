@@ -65,7 +65,10 @@ public class View {
                         registeredItem.getPrice());
                 System.out.println("Running total: " +
                         controller.getTotalOfSale());
-            } catch(ItemNotFoundException | ConnectionIssueException ex) {
+            } catch(ItemNotFoundException ex) {
+                errorMessageHandler.showErrorMessage("The searched item ID "
+                        + itemID + " can not be found. Try again.");
+            } catch(ConnectionIssueException ex) {
                 errorMessageHandler.showErrorMessage(ex.getMessage());
             }
         }

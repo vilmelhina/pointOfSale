@@ -41,7 +41,7 @@ public class InventorySystem {
                                                 InventorySystemException {
             if(itemID == FAKEDATABASEPROBLEM) {
                 throw new InventorySystemException("Super detailed message"
-                        + " about the database connection problem");
+                        + " about the database problem");
             }
             else if (itemID < 0 || itemID >= fakeItemList.length) {
                 throw new ItemNotFoundException(itemID);
