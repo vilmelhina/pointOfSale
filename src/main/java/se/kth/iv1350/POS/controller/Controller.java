@@ -101,7 +101,7 @@ public class Controller {
      * @param observer the observer that observes the Register
      */
     public void addRegisterObserver(RegisterObserver observer) {
-        register.addRentalObserver(observer);
+        register.addRegisterObserver(observer);
     }
 
 }

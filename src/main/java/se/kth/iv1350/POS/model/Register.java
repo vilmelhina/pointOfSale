@@ -40,7 +40,7 @@ public class Register {
      * register changes.
      * @param observer the observer that should be notified
      */
-    public void addRentalObserver(RegisterObserver observer) {
+    public void addRegisterObserver(RegisterObserver observer) {
         registerObservers.add(observer);
     }
 
