@@ -4,14 +4,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import se.kth.iv1350.POS.model.Cash;
-import se.kth.iv1350.POS.model.RegisterObserver;
+import se.kth.iv1350.POS.model.RegisterObserverOutputTemplate;
 import java.time.LocalDateTime;
 
 /**
  * Observes the class Register and writes the total revenue to a file when 
  * it changes.
  */
-public class TotalRevenueFileOutput implements RegisterObserver{
+public class TotalRevenueFileOutput extends RegisterObserverOutputTemplate{
 
     private PrintWriter fileStream;
     
@@ -26,15 +26,17 @@ public class TotalRevenueFileOutput implements RegisterObserver{
         }
     }
 
-    /**
-     * Called when total revenue has changes and updates the new revenue to 
-     * a file.
-     * @param totalRevenue the total revenue that should be added to the file
-     */
+    // TODO: comment
     @Override
-    public void totalRevenueChanged(Cash totalRevenue) {
+    protected void doShowTotalRevenue(Cash totalRevenue) throws Exception {
         fileStream.println(LocalDateTime.now() + 
                 " Total revenue: " + totalRevenue);
+    }
+
+    // TODO: comment
+    @Override
+    protected void handleErrors(Exception ex) {
+        ex.printStackTrace();
     }
     
 }

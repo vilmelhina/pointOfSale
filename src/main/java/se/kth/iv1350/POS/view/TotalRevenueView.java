@@ -1,22 +1,32 @@
 package se.kth.iv1350.POS.view;
 
 import se.kth.iv1350.POS.model.Cash;
-import se.kth.iv1350.POS.model.RegisterObserver;
+import se.kth.iv1350.POS.model.RegisterObserverOutputTemplate;
 
 /**
  * Observes the class Register and writes the total revenue to the console when
  * it changes.
  */
-public class TotalRevenueView implements RegisterObserver{
+public class TotalRevenueView extends RegisterObserverOutputTemplate{
 
     /**
-     * Called when the total revenue in the Register is changed. Writes the
-     * total revenue to the console.
-     * @param totalRevenue the total revenue that should be printed
+     * Shows the total revenue to the view.
+     * @param totalRevenue the total revenue
      */
     @Override
-    public void totalRevenueChanged(Cash totalRevenue) {
+    protected void doShowTotalRevenue(Cash totalRevenue){
         System.out.println("💶 Total revenue: " + totalRevenue);
     }
+
+    /**
+     * Would handle exceptions if there were any that could be thrown.
+     * @param exception the exception thrown
+     */
+    @Override
+    protected void handleErrors(Exception exception) {
+        
+    }
+
+
     
 }
