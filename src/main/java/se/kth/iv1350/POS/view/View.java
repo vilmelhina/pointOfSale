@@ -69,7 +69,8 @@ public class View {
                 errorMessageHandler.showErrorMessage("The searched item ID "
                         + itemID + " can not be found. Try again.");
             } catch(ConnectionIssueException ex) {
-                errorMessageHandler.showErrorMessage(ex.getMessage());
+                errorMessageHandler.showErrorMessage("There is an issue with"
+                        + "a network connection. Try again.");
             }
         }
 

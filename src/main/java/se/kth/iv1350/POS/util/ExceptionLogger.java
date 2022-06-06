@@ -10,7 +10,9 @@ public class ExceptionLogger {
     
     public static void logException(Exception exception) {
         System.out.println("📄 INTENDED FOR LOG: " 
-                + LocalDateTime.now() + " " + exception.getMessage());
+                + LocalDateTime.now());
+        exception.printStackTrace();
+        System.out.print("\n");
     }
     
 }
