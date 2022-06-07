@@ -70,7 +70,7 @@ public class View {
                         + itemID + " can not be found. Try again.");
             } catch(ConnectionIssueException ex) {
                 errorMessageHandler.showErrorMessage("There is an issue with"
-                        + "a network connection. Try again.");
+                        + " a network connection. Try again.");
             }
         }
 
